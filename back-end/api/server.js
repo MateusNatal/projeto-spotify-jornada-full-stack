@@ -3,11 +3,10 @@
 // CRUD - Create, Read, Update, Delete
 
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import cors from "cors";
 import { db } from "./connect.js";
-
-import { fileURLToPath } from "url";
-import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,13 +26,16 @@ app.get("/api/artists", async (request, response) => {
 app.get("/api/songs", async (request, response) => {
   response.send(await db.collection("songs").find({}).toArray());
 });
+const frontEndPath = path.join(__dirname, "../../front-end/dist");
 
-app.use(express.static(path.join(__dirname, "../front-end/dist")));
+app.use(express.static(frontEndPath));
 
-app.get("*", async (request, response) => {
-  response.sendFile(path.join(__dirname, "../front-end/dist/index.html"));
+app.get("*", (request, response) => {
+  response.sendFile(path.join(frontEndPath, "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor está sendo executado na porta ${PORT}`);
+console.log("Caminho do diretório front-end/dist:", frontEndPath);
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
