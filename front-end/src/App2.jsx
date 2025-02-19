@@ -1,10 +1,4 @@
-import React from "react";
-
-const App2 = () => {
-  return <div>App2</div>;
-};
-
-export default App2;
+// Anotações
 
 // rafce - Monta a base
 
@@ -13,7 +7,6 @@ export default App2;
 // Variavel / Nome Var / Parametros / Seta / Retorno (Não precisa chaves caso seja 1 retorno)
 
 // Nomeação de componentes = PascalCase
-
 // Nomeação de variáveis = camelCase (primeira minuscula, palavras juntas)
 
 // export default, posso importar com qualquer nome e sem chaves
@@ -33,4 +26,4 @@ export default App2;
 
 // Tag vazia em React se chama Fragment ou Fragmento
 
-// Componenstes recebem "props" (argumentos/parametros)
+// Componentes recebem "props" (argumentos/parametros)
